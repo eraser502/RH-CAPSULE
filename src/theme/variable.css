@@ -1,0 +1,26 @@
+:root {
+    --bg-color: #C0CAD6;
+    --main-color: #BC2749;
+    --content-color: #ECCDC1;
+    --text-color: black;
+}
+
+*{
+    /* font-family: 'TTTtangsbudaejjigaeB'; */
+    font-family: 'KyoboHandwriting2021sjy';
+}
+
+/* 땅스 */
+@font-face { 
+    font-family: 'TTTtangsbudaejjigaeB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+    /* font-weight: 700; */
+    font-style: normal;
+}
+
+@font-face { 
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

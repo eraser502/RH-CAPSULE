@@ -1,0 +1,14 @@
+.RCButton{
+    max-width: 500px;
+    width: calc(100% - 32px);
+    position:fixed;
+    border:none;
+    border-radius: 12px;
+    background-color: var(--main-color);
+    padding: 16px 0;
+    color: #eaeaea;
+    font-weight: 600;
+    font-size: 1.2rem;
+    bottom:20px;
+}
+

@@ -1,0 +1,17 @@
+.capsuleContainer{
+  display:flex;
+  gap:1px;
+  padding: 8px;
+
+  .capsuleLeft{
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 50% 0 0 50%;
+
+  }
+  .capsuleRight{
+    aspect-ratio: 1/1;
+    background-color: #F84646;
+    border-radius: 0 50% 50% 0;
+  }
+}

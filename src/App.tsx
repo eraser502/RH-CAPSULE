@@ -1,13 +1,14 @@
 import './App.css';
 import React, { useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { auth } from './firebase';
+// import { auth } from './firebase';
 import { Login } from './pages/Login';
-import { onAuthStateChanged } from 'firebase/auth';
+// import { onAuthStateChanged } from 'firebase/auth';
+import { Main } from './pages/Main';
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true)
-  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [isLogin, setIsLogin] = useState<boolean>(true)
   
   // useEffect(() => {
   //   onAuthStateChanged(auth, (user) => { // user 판명을 듣고 
@@ -23,16 +24,13 @@ function App() {
   // }, [])
 
   return (
-    <div>
+    <div style={{width:"100%", height:"100vh"}}>
       <BrowserRouter>
         {loading === false && isLogin ?
           <Routes>
-            <Route path='/' element={<Navigate to='profile' />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/diary' element={<Diary />} />
-            <Route path='/blog' element={<Blog />} />
-            <Route path='/plan' element={<Plan />} />
-            <Route path='/*' element={<Navigate to='profile' />} />
+            <Route path='/' element={<Navigate to='main' />} />
+            <Route path='/main' element={<Main />} />
+            <Route path='/*' element={<Navigate to='main' />} />
 
           </Routes>
           :

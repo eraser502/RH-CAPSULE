@@ -1,0 +1,30 @@
+.WCContainer {
+  width: 100%;
+  height: calc(100% - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .WCHeader{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 32px;
+  }
+  .WCBox {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--content-color);
+    height: calc(100% - 32px - 32px - 32px);
+    width: calc(100% - 32px);
+    border-radius: 16px;
+
+    .WCContent {
+        width: 100%;
+        height: calc(100% - 80px);
+        background-color: #eaeaea;
+    }
+  }
+}
