@@ -5,24 +5,36 @@ import { Button } from "../components/Button";
 import { TbSettings } from "react-icons/tb";
 import { Capsule } from "../components/Capsule";
 import { WriteCapsule } from "../components/WriteCapsule";
+import { Modal } from "../components/Modal";
+import {
+  ToastsContainer,
+  ToastsContainerPosition,
+  ToastsStore} from "react-toasts";
+import { handleSignOut } from "../services/login.services";
+
+
 export const Main = () => {
-  const [a, setA] = useState(1);
   const [isWriteOpen, setIsWriteOpen] = useState(false);
-
-  const sex = () => {
-    console.log("ㅎㅇ");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const onClickToastPopup = () => {
+    ToastsStore.success("링크가 복사되었습니다.");
   };
-
+  
   return (
     <div className="mainContainer">
       {isWriteOpen ? (
-        <WriteCapsule setIsWriteOpen={(e:boolean)=>setIsWriteOpen(e)} />
+        <WriteCapsule setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)} />
       ) : (
         <>
           <div className="mainContentBox">
+            <button onClick={()=>handleSignOut()}></button>
             <div className="mainHeader">
-              <TbSettings />
+              <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
             </div>
+            {isModalOpen ? (
+              <Modal bgClick={(e: boolean) => setIsModalOpen(e)} onClickToastPopup={()=>onClickToastPopup()} />
+            ) : null}
             <div className="mainMyCapsuleText">박도륜님의 캡슐</div>
             <div className="mainMyCapsule">
               <Capsule width="60px" />
@@ -37,11 +49,17 @@ export const Main = () => {
             </div>
           </div>
           <Button
+            bottom="20px"
             name="나에게 타임캡슐 쓰기"
             btnClick={() => setIsWriteOpen(!isWriteOpen)}
           ></Button>
         </>
       )}
+      <ToastsContainer  
+        position={ToastsContainerPosition.TOP_CENTER}
+        store={ToastsStore}
+        lightBackground
+      />
     </div>
   );
 };

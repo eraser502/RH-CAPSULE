@@ -1,0 +1,69 @@
+.signUpContainer {
+  width: calc(100% - 32px);
+  height: calc(100% - 64px);
+  padding: 16px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  gap: 40px;
+
+  .signUpTitleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+    .signUpTitle {
+      font-size: 32px;
+      color: var(--bg-color);
+      font-weight: 600;
+    }
+  }
+  .signUpInputBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    .signUpText {
+      font-size: 30px;
+      color: var(--bg-color);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    input {
+      font-size: 20px;
+      width: 200px;
+      padding: 0 16px;
+      height: 32px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      color: var(--bg-color);
+    }
+  }
+  .signUpButtonBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    .signUpButton {
+        font-size: 20px;
+        width: 232px;
+        height: 32px;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        background-color: white;
+        color: var(--bg-color);
+        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+    }
+    .signUpText {
+      font-size: 16px;
+      color: var(--bg-color);
+    }
+  }
+}

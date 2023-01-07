@@ -16,7 +16,7 @@ export const WriteCapsule = (props: { setIsWriteOpen: any }) => {
       <div className="WCBox">
         <div className="WCContent"></div>
       </div>
-      <Button name="타임캡슐 만들기" btnClick={()=>{props.setIsWriteOpen(false)}} />
+      <Button bottom = "20px" name="타임캡슐 만들기" btnClick={()=>{props.setIsWriteOpen(false)}} />
     </div>
   );
 };
