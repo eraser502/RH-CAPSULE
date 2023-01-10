@@ -41,6 +41,10 @@
       border: none;
       border-radius: 8px;
       outline: none;
+      // color: var(--bg-color);
+      color: gray;
+    }
+    input::placeholder{
       color: var(--bg-color);
     }
   }

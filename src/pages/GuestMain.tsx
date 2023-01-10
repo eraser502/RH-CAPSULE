@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Capsule } from "../components/Capsule";
 import { WriteCapsule } from "../components/WriteCapsule";
 import "./GuestMain.scss";
-export const GuestMain = () => {
+
+type pageParams = { userId: string }
+
+export const GuestMain: React.FC  = () => {
+
   const [isWriteOpen, setIsWriteOpen] = useState(false);
+  const { userId: userId } = useParams<pageParams>();
+  const navigate = useNavigate();
+
+
   return (
     <div className="mainContainer">
       {isWriteOpen ? (
@@ -13,7 +22,7 @@ export const GuestMain = () => {
         <>
           <div className="mainContentBox">
             <div className="mainReceivedCapsuleText">
-              박도륜님이 받은 캡슐들
+              {userId}님이 받은 캡슐들
             </div>
             <div className="mainReceivedCapsule">
               {[1, 1, 1, 1, 1].map(() => (
@@ -29,7 +38,7 @@ export const GuestMain = () => {
           <Button
             bottom="20px"
             name="나의 타임캡슐 만들러가기"
-            btnClick={() => setIsWriteOpen(!isWriteOpen)}
+            btnClick={() => navigate("/signUp")}
           ></Button>
           {/* Navigate로 수정해야함 */}
         </>

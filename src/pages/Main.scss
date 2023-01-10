@@ -23,6 +23,7 @@
       font-size: 24px;
       position: relative;
       top: 0;
+      gap: 4px;
     }
     .mainMyCapsuleText {
       font-size: 1.5rem;
@@ -42,15 +43,13 @@
       flex-flow: wrap row;
     }
   }
-  
-  
 }
 .toast {
   font-size: 16px !important;
   color: #fff !important;
   background-color: #999c9ad5 !important;
   border-radius: 8px !important;
-  min-height: 30px !important; 
+  min-height: 30px !important;
   width: 180px !important;
   margin: auto !important;
   display: inline-block !important;

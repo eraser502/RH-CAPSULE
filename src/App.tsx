@@ -9,6 +9,7 @@ import { GuestMain } from "./pages/GuestMain";
 import { SignUp } from "./pages/SignUp";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './firebase';
+import { makeUser } from "./services/login.services";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -35,9 +36,12 @@ function App() {
       } else {
         setIsLogin(false)
       }
+      setLoading(false)
     })
   }, [])
+  
   console.log("App.tsx 렌더링")
+  console.log(isLogin)
 
   return (
     <div style={{ width: "100%", height: "100vh" }}>
@@ -46,14 +50,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="main" />} />
             <Route path="/main" element={<Main />} />
-            <Route path="/guestMain" element={<GuestMain />} />
+            <Route path="/capsule/:userId" element={<GuestMain />} />
             <Route path="/*" element={<Navigate to="main" />} />
           </Routes>
         ) : (
           <Routes>
             <Route path="/" element={<Navigate to="login" />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setIsLogin={(e:any)=>{setIsLogin(e);makeUser();}} />} />
             <Route path="/signUp" element={<SignUp />} />
+            <Route path="/capsule/:userId" element={<GuestMain />} />
             <Route path="*" element={<Navigate to="login" />} />
           </Routes>
         )}

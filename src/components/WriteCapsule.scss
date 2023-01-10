@@ -5,26 +5,67 @@
   flex-direction: column;
   align-items: center;
 
-  .WCHeader{
+  .WCHeader {
     width: 100%;
     display: flex;
     justify-content: flex-start;
     font-size: 32px;
   }
-  .WCBox {
+  .WCTopBox {
     margin-top: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--content-color);
-    height: calc(100% - 32px - 32px - 32px);
+    // height: calc(100% - 32px - 32px - 32px);
+    height:48px;
     width: calc(100% - 32px);
-    border-radius: 16px;
+    border-radius: 16px 16px 0 0;
+  }
 
-    .WCContent {
-        width: 100%;
-        height: calc(100% - 80px);
-        background-color: #eaeaea;
+  .WCContent {
+    width: calc(100% - 32px);
+    height: calc(100% - 180px);
+    background-color: #eaeaea;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    textarea {
+      width: calc(100% - 32px);
+      height: calc(100% - 32px);
+      resize: none;
+      padding: 16px;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 24px;
     }
+    textarea:focus{
+      outline: none;
+    }
+  }
+  .WCBottomBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--content-color);
+    // height: calc(100% - 32px - 32px - 32px);
+    height: 48px;
+    width: calc(100% - 32px);
+    border-radius: 0 0 16px 16px;
+    input{
+      text-align:right;
+    }
+  }
+  input{
+    width:calc(100% - 32px);
+    border:none;
+    background-color: rgba(0,0,0,0);
+    font-size: 20px;
+  }
+  input:focus{
+    outline: none;
+  }
+  input::placeholder, textarea::placeholder{
+    color: #939393;
   }
 }

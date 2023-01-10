@@ -41,6 +41,9 @@
       border: none;
       border-radius: 8px;
       outline: none;
+      color: gray;
+    }
+    input::placeholder{
       color: var(--bg-color);
     }
   }
@@ -58,12 +61,14 @@
         border-radius: 8px;
         outline: none;
         background-color: white;
-        color: var(--bg-color);
+        // color: var(--bg-color);
+        color:gray;
         box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
     }
     .signUpText {
       font-size: 16px;
-      color: var(--bg-color);
+      // color: var(--bg-color);
+      color:gray;
     }
   }
 }

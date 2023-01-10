@@ -10,13 +10,16 @@ import {
   ToastsContainer,
   ToastsContainerPosition,
   ToastsStore} from "react-toasts";
-import { handleSignOut } from "../services/login.services";
+
+import { auth } from "../firebase"
 
 
 export const Main = () => {
   const [isWriteOpen, setIsWriteOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+  let user = auth.currentUser
+
   const onClickToastPopup = () => {
     ToastsStore.success("링크가 복사되었습니다.");
   };
@@ -28,19 +31,18 @@ export const Main = () => {
       ) : (
         <>
           <div className="mainContentBox">
-            <button onClick={()=>handleSignOut()}></button>
             <div className="mainHeader">
               <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
             </div>
             {isModalOpen ? (
               <Modal bgClick={(e: boolean) => setIsModalOpen(e)} onClickToastPopup={()=>onClickToastPopup()} />
             ) : null}
-            <div className="mainMyCapsuleText">박도륜님의 캡슐</div>
+            <div className="mainMyCapsuleText">{user.displayName}님의 캡슐</div>
             <div className="mainMyCapsule">
               <Capsule width="60px" />
             </div>
             <div className="mainReceivedCapsuleText">
-              박도륜님이 받은 캡슐들
+            {user.displayName}님이 받은 캡슐들
             </div>
             <div className="mainReceivedCapsule">
               {[1, 1, 1, 1, 1].map(() => (
