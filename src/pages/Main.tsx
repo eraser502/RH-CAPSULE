@@ -12,7 +12,7 @@ import {
   ToastsStore} from "react-toasts";
 
 import { auth } from "../firebase"
-
+import { Glass } from "../components/Glass";
 
 export const Main = () => {
   const [isWriteOpen, setIsWriteOpen] = useState(false);
@@ -35,10 +35,10 @@ export const Main = () => {
               <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
             </div>
             {isModalOpen ? (
-              <Modal bgClick={(e: boolean) => setIsModalOpen(e)} onClickToastPopup={()=>onClickToastPopup()} />
+              <Modal name="setting" bgClick={(e: boolean) => setIsModalOpen(e)} onClickToastPopup={()=>onClickToastPopup()} />
             ) : null}
-            <div className="mainMyCapsuleText">{user.displayName}님의 캡슐</div>
-            <div className="mainMyCapsule">
+            <div className="mainMyCapsuleText">{user.displayName}님의 캡슐함</div>
+            {/* <div className="mainMyCapsule">
               <Capsule width="60px" />
             </div>
             <div className="mainReceivedCapsuleText">
@@ -48,13 +48,14 @@ export const Main = () => {
               {[1, 1, 1, 1, 1].map(() => (
                 <Capsule width="40px" />
               ))}
-            </div>
+            </div> */}
           </div>
-          <Button
+          <Glass />
+          {/* <Button
             bottom="20px"
             name="나에게 타임캡슐 쓰기"
             btnClick={() => setIsWriteOpen(!isWriteOpen)}
-          ></Button>
+          ></Button> */}
         </>
       )}
       <ToastsContainer  

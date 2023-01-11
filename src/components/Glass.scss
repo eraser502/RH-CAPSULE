@@ -1,0 +1,42 @@
+.glassContainer{
+    .glassCapsule{
+        position:absolute;
+        top: calc((100% - 417px)/2);
+        left: calc((100% - 298px + 40px)/2);
+    }
+    .plusButton{
+        position:absolute;
+        top: calc((100% - 88px)/2);
+        left: calc((100% - 88px)/2);
+        z-index: 10;
+    }
+    // .plusButton{
+    //     position:absolute;
+    //     width: 80px;
+    //     height: 80px;
+    //     border-radius: 100%;
+    //     border: 2px dashed #a3a3a3;
+    //     z-index:10;
+    //     display:flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     left: calc(50% - 40px);
+    //     top: calc(50% - 40px);
+    //     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.15);
+    //     // background-color: rgba(var(--bg-color), 0.75);
+    //     .plusButtonLine1{
+    //         width:32px;
+    //         position:absolute;
+    //         border: 2px solid #a3a3a3;
+    //         background-color: #a3a3a3;
+            
+    //     }
+    //     .plusButtonLine2{
+    //         width:32px;
+    //         position:absolute;
+    //         border: 2px solid #a3a3a3;
+    //         rotate: 90deg;            
+    //         background-color: #a3a3a3;
+    //     }
+    // }
+}
