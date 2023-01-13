@@ -13,11 +13,12 @@ import {
 
 import { auth } from "../firebase"
 import { Glass } from "../components/Glass";
+import { InitSettingModal } from '../components/InitSettingModal';
 
 export const Main = () => {
   const [isWriteOpen, setIsWriteOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+ 
   let user = auth.currentUser
 
   const onClickToastPopup = () => {
@@ -35,7 +36,7 @@ export const Main = () => {
               <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
             </div>
             {isModalOpen ? (
-              <Modal name="setting" bgClick={(e: boolean) => setIsModalOpen(e)} onClickToastPopup={()=>onClickToastPopup()} />
+              <Modal bgClick={(e: boolean) => setIsModalOpen(e)} />
             ) : null}
             <div className="mainMyCapsuleText">{user.displayName}님의 캡슐함</div>
             {/* <div className="mainMyCapsule">

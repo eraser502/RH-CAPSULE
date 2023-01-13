@@ -32,7 +32,15 @@ export const setMyCapsule = async (obj:any) => {
         createdAt:obj.createdAt
     }, { merge: true })
 }
+export const setGlassSetting = async (obj:any) => {
+    const docRef = collection(db, "user");
+    const docRef2 = doc(docRef, auth.currentUser?.uid)
+    const docRef3 = collection(docRef2, "MyGlass")
 
+    await setDoc(doc(docRef3),
+       obj
+    , { merge: true })
+}
 
 export const updateTodo = async () => {
     //서버의 todo db 값을 props값으로 바꿔줌 

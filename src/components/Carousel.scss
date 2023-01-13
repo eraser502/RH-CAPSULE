@@ -1,0 +1,33 @@
+.glassSettingBox {
+  max-width: 200px;
+  .glassSettingHeader {
+    text-align: center;
+    font-size: 28px;
+    padding: 0 0 48px 0;
+  }
+  .glassBox {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 84px;
+    .glass {
+      width: 160px;
+      aspect-ratio: 215/318;
+    }
+  }
+}
+.slick-prev:before,
+.slick-next:before {
+  font-size: 32px;
+  color:gray;
+}
+
+.slick-prev:before {
+  position:absolute;
+  left: -8px;
+}
+.slick-next:before {
+  right:-8px;
+  position:absolute;
+}

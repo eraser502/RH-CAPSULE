@@ -8,6 +8,7 @@ import {
 import { handleSignOut } from "../services/login.services";
 import { auth } from "../firebase";
 import { FiLink } from "react-icons/fi";
+import { Carousel } from "./Carousel";
 
 export const Modal = (props: {
   bgClick: any;
@@ -42,11 +43,9 @@ export const Modal = (props: {
             <button onClick={() => handleSignOut()}>로그아웃</button>
           </div>
         </>
-      ) : props.name === "glassSetting" ? 
-      <div className="modalBG" onClick={() => props.bgClick(false)}>
-        <div className="modalGlassSettingBox">gd</div>
-      </div> 
+      ) 
       : null}
     </div>
   );
-};
+}; 
+// onClick={() => props.bgClick(false)}
