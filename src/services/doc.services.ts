@@ -2,21 +2,16 @@ import { UserCredential } from "firebase/auth";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { auth, db, storage } from "../firebase";
 
-export const getTodo = async () => {
+export const getGlassSetting = async () => {
     //todo 값을 db에서 받아옴
     const docRef = collection(db, "user");
     const docRef2 = doc(docRef, auth.currentUser?.uid)
+    const docRef3 = collection(docRef2, "MyGlass")
 
-    const docRef3 = collection(docRef2, "TODOLIST");
-    //const docRef4 = doc(docRef3, date);
-
-    const querySnapshot = await getDoc(doc(docRef3,"TODO"));
-    // let arr = [];
-    // querySnapshot.forEach((doc) => {
-    //     //console.log(doc.id, " => ", doc.data());
-    //     arr[doc.id] = doc.data();
-    // });
-    return 
+    const querySnapshot = await getDoc(doc(docRef3,"Me"));
+    // console.log(querySnapshot.data())
+    return querySnapshot.data();
+    
 }
 
 export const setMyCapsule = async (obj:any) => {
@@ -37,7 +32,7 @@ export const setGlassSetting = async (obj:any) => {
     const docRef2 = doc(docRef, auth.currentUser?.uid)
     const docRef3 = collection(docRef2, "MyGlass")
 
-    await setDoc(doc(docRef3),
+    await setDoc(doc(docRef3, "Me"),
        obj
     , { merge: true })
 }
@@ -48,7 +43,6 @@ export const updateTodo = async () => {
     const docRef2 = doc(docRef, auth.currentUser?.uid);
     const docRef3 = collection(docRef2, "TODOLIST");
     await updateDoc(doc(docRef3, "TODO"), {
-
     });
 }
 

@@ -5,11 +5,12 @@ import { InitSettingModal } from "./InitSettingModal";
 import { setGlassSetting } from '../services/doc.services';
 
 export const Glass = () => {
-
+  
   let glassSettingList = { glassColor: "", openDate: "", sealDate:"2023. 1. 31." };
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  
   const makeGlassDB=()=>{
-    setGlassSetting(glassSettingList);
+    setGlassSetting(glassSettingList).then();
     setModalIsOpen(false)
     //navigate 넣어야해
   }

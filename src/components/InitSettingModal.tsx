@@ -111,8 +111,8 @@ export const InitSettingModal = (props: {
               />
             </div>
             <div className="cork" />
-            <div className="tape" />
-            <div className="sealDate">봉인 일자 : 2023. 1. 31.</div>
+            {/* <div className="tape" /> */}
+            <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
 
             {/* <button onClick={() => props.bgClick(false)}>닫기</button> */}
             {/* <button onClick={() => console.log(props.color.glassColor)}>test</button> */}
@@ -149,8 +149,8 @@ export const InitSettingModal = (props: {
             </div>
             <div className="cork" />
             <div className="tape" />
-            <div className="sealDate">봉인 일자 : 2023. 1. 31.</div>
-            <div className="OpenDate">개봉 일자 : {props.glassSettingList.openDate}</div>
+            <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
+            <div className="OpenDate">개봉 일자<br />[{props.glassSettingList.openDate}]</div>
           </div>
         ) : null}
       </div>

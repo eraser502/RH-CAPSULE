@@ -48,23 +48,27 @@
         border-radius: 8px;
         top: calc((100% - 52px) / 2 - 80px - 56px);
       }
-      .tape {
-        position: absolute;
-        background-color: #eeeeee;
-        width: 20px;
-        height: 72px;
-        top: calc((100% - 52px) / 2 - 80px - 56px);
-        z-index: 11;
-      }
+      // .tape {
+      //   position: absolute;
+      //   background-color: #eeeeee;
+      //   width: 20px;
+      //   height: 72px;
+      //   top: calc((100% - 52px) / 2 - 80px - 56px);
+      //   z-index: 11;
+      // }
       .sealDate{
         position: absolute;
-        top: calc((100% - 52px) / 2 + 8px);
+        top: calc((100% - 52px) / 2 - 12px);
         z-index: 11;
+        text-align: center;
+        border-bottom: 2px dashed black;
       }
       .OpenDate{
         position: absolute;
-        top: calc((100% - 52px) / 2 + 28px);
+        top: calc((100% - 52px) / 2 + 36px);
         z-index: 11;
+        text-align: center;
+        border-bottom: 2px dashed black;
       }
     }
     .glassDateHeader {
