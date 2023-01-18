@@ -4,14 +4,16 @@ import { Modal } from "./Modal";
 import { InitSettingModal } from "./InitSettingModal";
 import { setGlassSetting } from '../services/doc.services';
 
-export const Glass = () => {
+export const Glass = (props:{fetchData:any}) => {
   
   let glassSettingList = { glassColor: "", openDate: "", sealDate:"2023. 1. 31." };
   const [modalIsOpen, setModalIsOpen] = useState(false);
   
   const makeGlassDB=()=>{
-    setGlassSetting(glassSettingList).then();
-    setModalIsOpen(false)
+    setGlassSetting(glassSettingList).then(()=>{
+      setModalIsOpen(false)
+      props.fetchData()
+    });
     //navigate 넣어야해
   }
   return (

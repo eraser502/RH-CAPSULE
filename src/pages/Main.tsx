@@ -20,8 +20,6 @@ import { getGlassSetting } from "../services/doc.services";
 export const Main = () => {
   const [isWriteOpen, setIsWriteOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isGlassDB, setIsGlassDB] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   let user = auth.currentUser;
 
@@ -29,27 +27,29 @@ export const Main = () => {
     ToastsStore.success("링크가 복사되었습니다.");
   };
 
-  let data;
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<any>(null)
 
-  useEffect(() => {
-    setIsLoading(true);
+  const fetchData = async () => {
+    setLoading(true);
     try {
       (async () => {
-        data = await getGlassSetting().then(() => {
-          
-          setIsLoading(false);
-        });
+        const response: any = await getGlassSetting()
+        if (response === undefined) { setLoading(false);return; }
+        setData(response);
+        setLoading(false);
       })();
     } catch (e: any) {
       console.log(e);
-      setIsLoading(false);
+      setLoading(false);
     }
-  }, []);
-  
-  
-  if (data !== undefined){
-    setIsGlassDB(true);
   }
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   console.log(data);
   //zustand 써서 불러오기
 
@@ -64,7 +64,7 @@ export const Main = () => {
               <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
             </div>
             {isModalOpen ? (
-              <Modal bgClick={(e: boolean) => setIsModalOpen(e)} />
+              <Modal name="setting" bgClick={(e: boolean) => setIsModalOpen(e)} />
             ) : null}
             <div className="mainMyCapsuleText">
               {user.displayName}님의 캡슐함
@@ -81,15 +81,15 @@ export const Main = () => {
               ))}
             </div> */}
           </div>
-          {isLoading ? (
-            <div style={{ fontSize: "52px" }}>Loading...</div>
-          ) : isGlassDB ? (
+          {loading ? (
+            <div style={{ position:"absolute", left:"0", top:"0",fontSize:"52px", width: "100vh",height:"100vh", background: "white", color: "red" }}>Loading...</div>
+          ) : data === null ? (
+            <Glass fetchData={()=>{fetchData()}} />
+          ) : (
             <img
               className="glassCapsule"
-              src="/assets/glass_${data.glassColor}.png"
+              src={`/assets/glass_${data.glassColor}.png`}
             />
-          ) : (
-            <Glass />
           )}
           {/* <Button
             bottom="20px"

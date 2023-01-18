@@ -57,7 +57,7 @@ export const Carousel = (props: { setColor: any }) => {
           <GlassButton
             name="색상 결정하기"
             buttonColor="#AF90EF"
-            onClick={()=>{props.setColor("AF90EF");console.log("sex")}}
+            onClick={()=>{props.setColor("AF90EF")}}
           />
         </div>
       </Slider>
