@@ -36,36 +36,21 @@
       align-items: center;
       flex-direction: column;
       .glass {
+        margin-left:20px;
         width: 160px;
         aspect-ratio: 215/318;
         z-index: 10;
       }
-      .cork {
-        position: absolute;
-        background-color: #9a682d;
-        width: 40px;
-        height: 52px;
-        border-radius: 8px;
-        top: calc((100% - 52px) / 2 - 80px - 56px);
-      }
-      // .tape {
-      //   position: absolute;
-      //   background-color: #eeeeee;
-      //   width: 20px;
-      //   height: 72px;
-      //   top: calc((100% - 52px) / 2 - 80px - 56px);
-      //   z-index: 11;
-      // }
       .sealDate{
         position: absolute;
-        top: calc((100% - 52px) / 2 - 12px);
+        top: calc((100% - 52px) / 2  - 24px);
         z-index: 11;
         text-align: center;
         border-bottom: 2px dashed black;
       }
       .OpenDate{
         position: absolute;
-        top: calc((100% - 52px) / 2 + 36px);
+        top: calc((100% - 52px) / 2 + 24px);
         z-index: 11;
         text-align: center;
         border-bottom: 2px dashed black;

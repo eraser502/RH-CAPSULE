@@ -10,8 +10,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 84px;
+    gap: 52px;
     .glass {
+      margin-left:20px;
       width: 160px;
       aspect-ratio: 215/318;
     }
@@ -25,9 +26,11 @@
 
 .slick-prev:before {
   position:absolute;
+  bottom: 32px;
   left: -8px;
 }
 .slick-next:before {
   right:-8px;
+  bottom: 32px;
   position:absolute;
 }

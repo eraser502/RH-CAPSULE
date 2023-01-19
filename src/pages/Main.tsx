@@ -5,6 +5,7 @@ import { Button } from "../components/Button";
 import { TbSettings } from "react-icons/tb";
 import { Capsule } from "../components/Capsule";
 import { WriteCapsule } from "../components/WriteCapsule";
+import { Loading } from "../components/Loading";
 import { Modal } from "../components/Modal";
 import {
   ToastsContainer,
@@ -28,14 +29,17 @@ export const Main = () => {
   };
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>(null)
-
+  const [data, setData] = useState<any>(null);
   const fetchData = async () => {
     setLoading(true);
     try {
       (async () => {
-        const response: any = await getGlassSetting()
-        if (response === undefined) { setLoading(false);return; }
+        const response: any = await getGlassSetting();
+
+        if (response === undefined) {
+          setLoading(false);
+          return;
+        }
         setData(response);
         setLoading(false);
       })();
@@ -43,12 +47,25 @@ export const Main = () => {
       console.log(e);
       setLoading(false);
     }
-  }
-  
+  };
+
+  const urlLink: string =
+    "https://rh-capsule.firebaseapp.com/capsule/" + auth.currentUser.uid;
+
+  const linkCopy = async () => {
+    try {
+      navigator.clipboard.writeText(urlLink).then(() => {
+        onClickToastPopup();
+      });
+    } catch (err: any) {
+      console.log(err);
+      alert("링크 복사 실패");
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
-
 
   console.log(data);
   //zustand 써서 불러오기
@@ -56,7 +73,7 @@ export const Main = () => {
   return (
     <div className="mainContainer">
       {isWriteOpen ? (
-        <WriteCapsule setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)} />
+        <WriteCapsule capsuleDB={data.capsuleDB} isMe={true} setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)} />
       ) : (
         <>
           <div className="mainContentBox">
@@ -64,7 +81,10 @@ export const Main = () => {
               <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
             </div>
             {isModalOpen ? (
-              <Modal name="setting" bgClick={(e: boolean) => setIsModalOpen(e)} />
+              <Modal
+                name="setting"
+                bgClick={(e: boolean) => setIsModalOpen(e)}
+              />
             ) : null}
             <div className="mainMyCapsuleText">
               {user.displayName}님의 캡슐함
@@ -82,20 +102,31 @@ export const Main = () => {
             </div> */}
           </div>
           {loading ? (
-            <div style={{ position:"absolute", left:"0", top:"0",fontSize:"52px", width: "100vh",height:"100vh", background: "white", color: "red" }}>Loading...</div>
+            <Loading>로딩중...</Loading>
           ) : data === null ? (
-            <Glass fetchData={()=>{fetchData()}} />
-          ) : (
-            <img
-              className="glassCapsule"
-              src={`/assets/glass_${data.glassColor}.png`}
+            <Glass
+              fetchData={() => {
+                fetchData();
+              }}
             />
+          ) : (
+            <>
+              <img
+                className="glassCapsule"
+                src={`/assets/glassOpen_${data.glassSetting.glassColor}.png`}
+              />
+              <Button
+                bottom="84px"
+                name="나에게 타임캡슐 쓰기"
+                btnClick={() => setIsWriteOpen(!isWriteOpen)}
+              ></Button>
+              <Button
+                bottom="20px"
+                name="링크 복사"
+                btnClick={() => linkCopy()}
+              ></Button>
+            </>
           )}
-          {/* <Button
-            bottom="20px"
-            name="나에게 타임캡슐 쓰기"
-            btnClick={() => setIsWriteOpen(!isWriteOpen)}
-          ></Button> */}
         </>
       )}
       <ToastsContainer

@@ -21,43 +21,43 @@ export const Carousel = (props: { setColor: any }) => {
       <div className="glassSettingHeader">캡슐함 색상 고르기</div>
       <Slider {...settings}>
         <div className="glassBox">
-          <img className="glass" src="/assets/glass_noShadow_BC2749.png" />
+          <img className="glass" src="/assets/glass_BD284A.png" />
           <GlassButton
             name="색상 결정하기"
-            buttonColor="#BC2749"
-            onClick={()=>{props.setColor("BC2749")}}
+            buttonColor="#BD284A"
+            onClick={()=>{props.setColor("BD284A")}}
           />
         </div>
         <div className="glassBox">
-          <img className="glass" src="/assets/glass_noShadow_ECCDC1.png" />
+          <img className="glass" src="/assets/glass_AC96D6.png" />
           <GlassButton
             name="색상 결정하기"
-            buttonColor="#ECCDC1"
-            onClick={()=>{props.setColor("ECCDC1")}}
+            buttonColor="#AC96D6"
+            onClick={()=>{props.setColor("AC96D6")}}
           />
         </div>
         <div className="glassBox">
-          <img className="glass" src="/assets/glass_noShadow_7FE88A.png" />
+          <img className="glass" src="/assets/glass_8DB6CC.png" />
           <GlassButton
             name="색상 결정하기"
-            buttonColor="#7FE88A"
-            onClick={()=>{props.setColor("7FE88A")}}
+            buttonColor="#8DB6CC"
+            onClick={()=>{props.setColor("8DB6CC")}}
           />
         </div>
         <div className="glassBox">
-          <img className="glass" src="/assets/glass_noShadow_95CBFC.png" />
+          <img className="glass" src="/assets/glass_CCC89B.png" />
           <GlassButton
             name="색상 결정하기"
-            buttonColor="#95CBFC"
-            onClick={()=>{props.setColor("95CBFC")}}
+            buttonColor="#CCC89B"
+            onClick={()=>{props.setColor("CCC89B")}}
           />
         </div>
         <div className="glassBox">
-          <img className="glass" src="/assets/glass_noShadow_AF90EF.png" />
+          <img className="glass" src="/assets/glass_D6B89C.png" />
           <GlassButton
             name="색상 결정하기"
-            buttonColor="#AF90EF"
-            onClick={()=>{props.setColor("AF90EF")}}
+            buttonColor="#D6B89C"
+            onClick={()=>{props.setColor("D6B89C")}}
           />
         </div>
       </Slider>

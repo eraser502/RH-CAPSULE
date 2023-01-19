@@ -2,28 +2,32 @@ import React, { useState } from "react";
 import "./Glass.scss";
 import { Modal } from "./Modal";
 import { InitSettingModal } from "./InitSettingModal";
-import { setGlassSetting } from '../services/doc.services';
+import { setGlassSetting, setCapsuleDB } from "../services/doc.services";
 
-export const Glass = (props:{fetchData:any}) => {
-  
-  let glassSettingList = { glassColor: "", openDate: "", sealDate:"2023. 1. 31." };
+export const Glass = (props: { fetchData: any }) => {
+  let glassSettingList = {
+    glassColor: "",
+    openDate: "",
+    sealDate: "2023. 1. 31.",
+  };
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  
-  const makeGlassDB=()=>{
-    setGlassSetting(glassSettingList).then(()=>{
-      setModalIsOpen(false)
-      props.fetchData()
+
+  const makeGlassDB = () => {
+    setGlassSetting(glassSettingList).then(() => {
+      setModalIsOpen(false);
+      props.fetchData();
     });
+    setCapsuleDB();
     //navigate 넣어야해
-  }
+  };
   return (
     <div className="glassContainer">
-      <img className="glassCapsule" src="/assets/capsuleGlass_normal.png" />
       <img
-        className="plusButton"
+        className="glassCapsule"
         onClick={() => setModalIsOpen(true)}
-        src="/assets/Plusicon.png"
+        src="/assets/glass_normal.png"
       />
+
       {/* <div className="plusButton">
             <div className="plusButtonLine1" />
             <div className="plusButtonLine2" />
@@ -32,9 +36,15 @@ export const Glass = (props:{fetchData:any}) => {
         <InitSettingModal
           glassSettingList={glassSettingList}
           bgClick={(e: any) => setModalIsOpen(e)}
-          glassColorSetting={(color:string) => {glassSettingList.glassColor=color}}
-          glassOpenDateSetting={(date:string) => {glassSettingList.openDate=date}}
-          makeGlassDB={()=>{makeGlassDB()}}
+          glassColorSetting={(color: string) => {
+            glassSettingList.glassColor = color;
+          }}
+          glassOpenDateSetting={(date: string) => {
+            glassSettingList.openDate = date;
+          }}
+          makeGlassDB={() => {
+            makeGlassDB();
+          }}
         />
       ) : null}
     </div>

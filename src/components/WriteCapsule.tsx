@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
-import { setMyCapsule, setReceivedCapsules } from "../services/doc.services";
+import { setReceivedCapsules, updateCapsuleDB } from "../services/doc.services";
 import { Button } from "./Button";
 import "./WriteCapsule.scss";
 
-export const WriteCapsule = (props: { setIsWriteOpen: any }) => {
+export const WriteCapsule = (props: {
+  capsuleDB: any;
+  isMe?: boolean;
+  setIsWriteOpen: any;
+}) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [writer, setWriter] = useState("");
-  
-  
-  const handleCapsule = async() => {
-    const date = new Date()
-    let capsule = {title:title, content:content, writer:writer, createdAt:date}
-    
-    if(true){
-      setMyCapsule(capsule);
-    }
-    else{
-      setReceivedCapsules(capsule)
-    }
-  }
+
+  const handleCapsule = async () => {
+    const date = new Date();
+    let capsule = {
+      title: title,
+      content: content,
+      writer: writer,
+      createdAt: date,
+      isMe: props.isMe,
+    };
+    let tmp = [...props.capsuleDB, capsule];
+
+    updateCapsuleDB(tmp);
+  };
 
   return (
     <div className="WCContainer">
@@ -32,13 +37,25 @@ export const WriteCapsule = (props: { setIsWriteOpen: any }) => {
         />
       </div>
       <div className="WCTopBox">
-        <input onChange={(e:any)=>setTitle(e.target.value)} value={title} placeholder="To."/>
+        <input
+          onChange={(e: any) => setTitle(e.target.value)}
+          value={title}
+          placeholder="To."
+        />
       </div>
       <div className="WCContent">
-        <textarea onChange={(e:any)=>setContent(e.target.value)} value={content}placeholder="내용을 입력하세요."/>
+        <textarea
+          onChange={(e: any) => setContent(e.target.value)}
+          value={content}
+          placeholder="내용을 입력하세요."
+        />
       </div>
       <div className="WCBottomBox">
-        <input  onChange={(e:any)=>setWriter(e.target.value)} value={writer} placeholder="From."/>
+        <input
+          onChange={(e: any) => setWriter(e.target.value)}
+          value={writer}
+          placeholder="From."
+        />
       </div>
       <Button
         bottom="20px"

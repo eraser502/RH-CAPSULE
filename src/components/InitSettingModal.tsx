@@ -72,12 +72,12 @@ export const InitSettingModal = (props: {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "32px",
+                gap: "16px",
               }}
             >
               <img
                 className="glass"
-                src={`/assets/glass_noShadow_${props.glassSettingList.glassColor}.png`}
+                src={`/assets/glass_${props.glassSettingList.glassColor}.png`}
               />
 
               <div
@@ -110,7 +110,7 @@ export const InitSettingModal = (props: {
                 }}
               />
             </div>
-            <div className="cork" />
+            {/* <div className="cork" /> */}
             {/* <div className="tape" /> */}
             <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
 
@@ -129,18 +129,18 @@ export const InitSettingModal = (props: {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "84px",
+                gap: "52px",
               }}
             >
               <img
                 className="glass"
-                src={`/assets/glass_noShadow_${props.glassSettingList.glassColor}.png`}
+                src={`/assets/glass_${props.glassSettingList.glassColor}.png`}
               />
               <GlassButton
                 name="캡슐함 생성하기"
                 buttonColor={"#" + props.glassSettingList.glassColor}
                 onClick={() => {
-                  if(!window.confirm("생성하시겠슴까?")){
+                  if(!window.confirm("생성하시겠습니까?")){
                     return
                   }
                   props.makeGlassDB();
