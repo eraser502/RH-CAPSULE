@@ -73,7 +73,7 @@ export const Main = () => {
   return (
     <div className="mainContainer">
       {isWriteOpen ? (
-        <WriteCapsule capsuleDB={data.capsuleDB} isMe={true} setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)} />
+        <WriteCapsule color={data.glassSetting.glassColor} capsuleDB={data.capsuleDB} isMe={true} setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)} />
       ) : (
         <>
           <div className="mainContentBox">
@@ -116,11 +116,13 @@ export const Main = () => {
                 src={`/assets/glassOpen_${data.glassSetting.glassColor}.png`}
               />
               <Button
+              btColor={data.glassSetting.glassColor}
                 bottom="84px"
                 name="나에게 타임캡슐 쓰기"
                 btnClick={() => setIsWriteOpen(!isWriteOpen)}
               ></Button>
               <Button
+              btColor={data.glassSetting.glassColor}
                 bottom="20px"
                 name="링크 복사"
                 btnClick={() => linkCopy()}

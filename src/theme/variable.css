@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #C0CAD6;
+    --bg-color: none;
     --main-color: #BC2749;
     --content-color: #ECCDC1;
     --text-color: black;
@@ -9,7 +9,11 @@
     /* font-family: 'TTTtangsbudaejjigaeB'; */
     font-family: 'KyoboHandwriting2021sjy';
 }
-
+body{
+    background-image: url(../backgroundImage/background_beach.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* 땅스 */
 @font-face { 
     font-family: 'TTTtangsbudaejjigaeB';

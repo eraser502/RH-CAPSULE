@@ -40,12 +40,17 @@ export const GuestMain: React.FC = () => {
         <Loading></Loading>
       ) : isWriteOpen ? (
         <WriteCapsule
+        color={data.color}
           capsuleDB={data.capsuleDB}
           isMe={false}
           setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)}
         />
       ) : (
-        <><img className="glassCapsule" src={`/assets/glassOpen_${data.color}.png`} />
+        <>
+          <img
+            className="glassCapsule"
+            src={`/assets/glassOpen_${data.color}.png`}
+          />
           <div className="mainContentBox">
             <div className="mainReceivedCapsuleText">
               {data.name}님이 받은 캡슐들
@@ -57,15 +62,17 @@ export const GuestMain: React.FC = () => {
             </div>
           </div>
           <Button
-            bottom="80px"
+            btColor={data.color}
+            bottom="84px"
             name={`${data.name}님에게 타임캡슐 쓰기`}
             btnClick={() => {
               setIsWriteOpen(!isWriteOpen);
             }}
           ></Button>
           <Button
+            btColor={data.color}
             bottom="20px"
-            name="나의 타임캡슐 만들러가기"
+            name="나의 타임캡슐 만들러 가기"
             btnClick={() => navigate("/signUp")}
           ></Button>
           {/* Navigate로 수정해야함 */}

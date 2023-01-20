@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #eaeaea;
+  // background-color: #eaeaea;
   gap: 40px;
 
   .signUpTitleBox {
@@ -17,8 +17,9 @@
     gap: 16px;
     .signUpTitle {
       font-size: 32px;
-      color: var(--bg-color);
+      color: white;
       font-weight: 600;
+      font-family: 'TTTtangsbudaejjigaeB';
     }
   }
   .signUpInputBox {
@@ -71,4 +72,10 @@
       color:gray;
     }
   }
+}
+@font-face { 
+  font-family: 'TTTtangsbudaejjigaeB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+  /* font-weight: 700; */
+  font-style: normal;
 }

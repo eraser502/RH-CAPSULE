@@ -16,7 +16,7 @@ export const SignUp = () => {
   return (
     <div className="signUpContainer">
       <div className="signUpTitleBox">
-        <div className="signUpTitle">RH-Capsule</div>
+        <div className="signUpTitle">모두의 타임캡슐</div>
         <Capsule width="60px" />
       </div>
       <div className="signUpInputBox">
@@ -63,7 +63,7 @@ export const SignUp = () => {
         </button>
         <div className="signUpText">
           <span
-            style={{ borderBottom: "1px solid white" }}
+            style={{ borderBottom: "1px solid gray" }}
             onClick={() => navigate("/login")}
           >
             로그인으로 돌아가기

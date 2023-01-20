@@ -81,18 +81,18 @@ export const Login = (props:{setIsLogin:any}) => {
   return (
     <div className="loginContainer">
       <div className="loginTitleBox">
-        <div className="loginTitle">RH-Capsule</div>
+        <div className="loginTitle">모두의 타임캡슐</div>
         <Capsule width="60px" />
       </div>
       <div className="loginInputBox">
         <input
-          placeholder="e-mail"
+          placeholder="이메일"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="비밀번호"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           onKeyPress={(e) => {
@@ -112,7 +112,7 @@ export const Login = (props:{setIsLogin:any}) => {
         <div className="signUpText">
           계정이 없으신가요?{" "}
           <span
-            style={{ borderBottom: "1px solid white" }}
+            style={{ borderBottom: "1px solid gray" }}
             onClick={() => navigate("/signUp")}
           >
             신규등록

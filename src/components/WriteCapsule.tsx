@@ -5,6 +5,7 @@ import { Button } from "./Button";
 import "./WriteCapsule.scss";
 
 export const WriteCapsule = (props: {
+  color?:any
   capsuleDB: any;
   isMe?: boolean;
   setIsWriteOpen: any;
@@ -58,6 +59,7 @@ export const WriteCapsule = (props: {
         />
       </div>
       <Button
+      btColor={props.color}
         bottom="20px"
         name="타임캡슐 만들기"
         btnClick={() => {
