@@ -18,7 +18,7 @@
     .mainHeader {
       width: 100%;
       display: flex;
-      justify-content: end;
+      justify-content: space-between;
       align-items: center;
       font-size: 24px;
       position: relative;
@@ -26,8 +26,8 @@
       gap: 4px;
     }
     .mainMyCapsuleText {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 400;
     }
 
     .mainMyCapsule {
@@ -41,6 +41,98 @@
       width: calc(80px * 3 + 17px * 3);
       display: flex;
       flex-flow: wrap row;
+    }
+
+    .mainReceivedCapsule > div:nth-child(1){
+      position:absolute;
+      left:calc(50% - 116px);
+      top: calc(50% + 80px);
+      rotate: -75deg;
+    }
+    .mainReceivedCapsule > div:nth-child(2){
+      position:absolute;
+      left:calc(50% - 80px);
+      top: calc(50% + 96px);
+      rotate:12deg;
+    }
+    .mainReceivedCapsule > div:nth-child(3){
+      position:absolute;
+      left:calc(50% - 48px);
+      top: calc(50% + 80px);
+      rotate:205deg;
+    }
+    .mainReceivedCapsule > div:nth-child(4){
+      position:absolute;
+      left:calc(50% + 8px);
+      top: calc(50% + 92px);
+      rotate:-12deg;
+    }
+    .mainReceivedCapsule > div:nth-child(5){
+      position:absolute;
+      left:calc(50% - 100px);
+      top: calc(50% + 32px);
+      rotate:192deg;
+    }
+    .mainReceivedCapsule > div:nth-child(6){
+      position:absolute;
+      left:calc(50% - 40px);
+      top: calc(50% + 32px);
+      rotate:-60deg;
+    }
+    .mainReceivedCapsule > div:nth-child(7){
+      position:absolute;
+      left:calc(50% + 12px);
+      top: calc(50% + 52px);
+      rotate:-170deg;
+    }
+    
+    .mainReceivedCapsule > div:nth-child(8){
+      position:absolute;
+      left:calc(50% - 96px);
+      top: calc(50% - 4px);
+      rotate:10deg;
+    }
+    .mainReceivedCapsule > div:nth-child(9){
+      position:absolute;
+      left:calc(50% + 16px);
+      top: calc(50% + 12px);
+      rotate:-140deg;
+    }
+    .mainReceivedCapsule > div:nth-child(10){
+      position:absolute;
+      left:calc(50% - 52px);
+      top: calc(50% - 32px);
+      rotate:-150deg;
+    }
+    .mainReceivedCapsule > div:nth-child(11){
+      position:absolute;
+      left:calc(50% + 28px);
+      top: calc(50% - 40px);
+      rotate:76deg;
+    }
+    .mainReceivedCapsule > div:nth-child(12){
+      position:absolute;
+      left:calc(50% - 104px);
+      top: calc(50% - 32px);
+      rotate:-150deg;
+    }
+    .mainReceivedCapsule > div:nth-child(13){
+      position:absolute;
+      left:calc(50% - 24px);
+      top: calc(50% - 48px);
+      rotate:15deg;
+    }
+    .mainReceivedCapsule > div:nth-child(14){
+      position:absolute;
+      left:calc(50% - 96px);
+      top: calc(50% - 80px);
+      rotate:-190deg;
+    }
+    .mainReceivedCapsule > div:nth-child(15){
+      position:absolute;
+      left:calc(50% - 12px);
+      top: calc(50% - 88px);
+      rotate:-175deg;
     }
   }
 }

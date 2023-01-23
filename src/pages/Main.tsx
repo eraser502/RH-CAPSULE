@@ -7,6 +7,7 @@ import { Capsule } from "../components/Capsule";
 import { WriteCapsule } from "../components/WriteCapsule";
 import { Loading } from "../components/Loading";
 import { Modal } from "../components/Modal";
+import { GrInfo } from "react-icons/gr"
 import {
   ToastsContainer,
   ToastsContainerPosition,
@@ -21,11 +22,16 @@ import { getGlassSetting } from "../services/doc.services";
 export const Main = () => {
   const [isWriteOpen, setIsWriteOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalName, setModalName] = useState("")
 
   let user = auth.currentUser;
 
-  const onClickToastPopup = () => {
-    ToastsStore.success("링크가 복사되었습니다.");
+  const onClickToastPopup = (name:string) => {
+    if(name === "Email"){
+      ToastsStore.success("이메일이 복사되었습니다.");
+    }else{
+      ToastsStore.success("링크가 복사되었습니다.");
+    }
   };
 
   const [loading, setLoading] = useState(false);
@@ -44,21 +50,30 @@ export const Main = () => {
         setLoading(false);
       })();
     } catch (e: any) {
-      console.log(e);
       setLoading(false);
     }
   };
-
+  let capsules = [];
+  if (data) {
+    for (let i = 0; i < data.capsuleDB.length; i++) {
+      capsules.push(
+        <Capsule color={data.capsuleDB[i].capsuleColor} width="40px" />
+      );
+      if (i == 14) {
+        break;
+      }
+    }
+  }
   const urlLink: string =
     "https://rh-capsule.firebaseapp.com/capsule/" + auth.currentUser.uid;
 
   const linkCopy = async () => {
     try {
       navigator.clipboard.writeText(urlLink).then(() => {
-        onClickToastPopup();
+        onClickToastPopup("");
       });
     } catch (err: any) {
-      console.log(err);
+      // console.log(err);
       alert("링크 복사 실패");
     }
   };
@@ -67,22 +82,31 @@ export const Main = () => {
     fetchData();
   }, []);
 
-  console.log(data);
-  //zustand 써서 불러오기
 
   return (
     <div className="mainContainer">
       {isWriteOpen ? (
-        <WriteCapsule color={data.glassSetting.glassColor} capsuleDB={data.capsuleDB} isMe={true} setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)} />
+        <WriteCapsule
+          color={data.glassSetting.glassColor}
+          capsuleDB={data.capsuleDB}
+          isMe={true}
+          setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)}
+          reLoadCapsule={() => {
+            fetchData();
+          }}
+        />
       ) : (
         <>
           <div className="mainContentBox">
             <div className="mainHeader">
-              <TbSettings onClick={() => setIsModalOpen(!isModalOpen)} />
+              <GrInfo onClick={()=>{setIsModalOpen(true);setModalName("info")}} />
+              <TbSettings onClick={() => {setModalName("setting");setIsModalOpen(!isModalOpen)}} />
             </div>
             {isModalOpen ? (
               <Modal
-                name="setting"
+                color="fff"
+                name={modalName}
+                onClickToastPopup = {()=>onClickToastPopup("Email")}
                 bgClick={(e: boolean) => setIsModalOpen(e)}
               />
             ) : null}
@@ -91,18 +115,19 @@ export const Main = () => {
             </div>
             {/* <div className="mainMyCapsule">
               <Capsule width="60px" />
-            </div>
-            <div className="mainReceivedCapsuleText">
-            {user.displayName}님이 받은 캡슐들
-            </div>
-            <div className="mainReceivedCapsule">
-              {[1, 1, 1, 1, 1].map(() => (
-                <Capsule width="40px" />
-              ))}
             </div> */}
+            {/* <div className="mainReceivedCapsuleText">
+            {user.displayName}님이 받은 캡슐들
+            </div> */}
+            <div className="mainReceivedCapsule">
+              {/* {[1, 1, 1, 1, 1,1,1,1,1,1,1,1,1,1,1].map(() => (
+                <Capsule width="40px" />
+              ))} */}
+              {capsules}
+            </div>
           </div>
           {loading ? (
-            <Loading>로딩중...</Loading>
+            <Loading></Loading>
           ) : data === null ? (
             <Glass
               fetchData={() => {
@@ -116,13 +141,13 @@ export const Main = () => {
                 src={`/assets/glassOpen_${data.glassSetting.glassColor}.png`}
               />
               <Button
-              btColor={data.glassSetting.glassColor}
+                btColor={data.glassSetting.glassColor}
                 bottom="84px"
                 name="나에게 타임캡슐 쓰기"
                 btnClick={() => setIsWriteOpen(!isWriteOpen)}
               ></Button>
               <Button
-              btColor={data.glassSetting.glassColor}
+                btColor={data.glassSetting.glassColor}
                 bottom="20px"
                 name="링크 복사"
                 btnClick={() => linkCopy()}

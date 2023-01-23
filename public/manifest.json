@@ -16,6 +16,9 @@
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },{
+      "src": "logoBackground.png",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

@@ -11,7 +11,8 @@ export const GlassButton = (props: {
       onClick={() => props.onClick()}
       style={{
         backgroundColor: props.buttonColor,
-        color: props.buttonColor === "#BD284A" ? "white" : "",
+        color:"#eaeaea",
+        fontWeight:"400"
       }}
     >
       {props.name}

@@ -15,26 +15,16 @@
     align-items: center;
     gap: 32px;
 
-    .mainHeader {
-      width: 100%;
-      display: flex;
-      justify-content: end;
-      align-items: center;
-      font-size: 24px;
-      position: relative;
-      top: 0;
-    }
     .mainMyCapsuleText {
-      font-size: 1.75rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 400;
     }
 
-    .mainMyCapsule {
-    }
     .mainReceivedCapsuleText {
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-top: 32px;
-      font-weight: 600;
+      font-weight: 400;
+      text-align: center;
     }
     .mainReceivedCapsule {
       width: calc(80px * 3 + 17px * 3);
@@ -47,4 +37,5 @@
   position: absolute;
   top: calc((100% - 393px) / 2);
   left: calc((100% - 255px + 40px) / 2);
+  z-index: 1;
 }

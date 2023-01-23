@@ -18,7 +18,6 @@ export const Glass = (props: { fetchData: any }) => {
       props.fetchData();
     });
     setCapsuleDB();
-    //navigate 넣어야해
   };
   return (
     <div className="glassContainer">
@@ -28,10 +27,6 @@ export const Glass = (props: { fetchData: any }) => {
         src="/assets/glass_normal.png"
       />
 
-      {/* <div className="plusButton">
-            <div className="plusButtonLine1" />
-            <div className="plusButtonLine2" />
-        </div> */}
       {modalIsOpen ? (
         <InitSettingModal
           glassSettingList={glassSettingList}

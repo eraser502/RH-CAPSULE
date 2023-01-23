@@ -32,18 +32,29 @@ export const GuestMain: React.FC = () => {
     fetchData();
   }, []);
 
-  console.log(data);
-
+  let capsules = [];
+  if (data) {
+    for (let i = 0; i < data.capsuleDB.length; i++) {
+      capsules.push(
+        <Capsule color={data.capsuleDB[i].capsuleColor} width="40px" />
+      );
+      if (i == 14) {
+        break;
+      }
+    }
+  }
   return (
     <div className="mainContainer">
       {loading ? (
         <Loading></Loading>
       ) : isWriteOpen ? (
         <WriteCapsule
-        color={data.color}
+          userId={userId}
+          color={data.color}
           capsuleDB={data.capsuleDB}
           isMe={false}
           setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)}
+          reLoadCapsule={() => fetchData()}
         />
       ) : (
         <>
@@ -53,12 +64,13 @@ export const GuestMain: React.FC = () => {
           />
           <div className="mainContentBox">
             <div className="mainReceivedCapsuleText">
-              {data.name}님이 받은 캡슐들
+              {data.name}님이<br/> 받은 캡슐들
             </div>
             <div className="mainReceivedCapsule">
-              {data.capsuleDB.map(() => (
+              {/* {data.capsuleDB.map(() => (
                 <Capsule width="40px" />
-              ))}
+              ))} */}
+              {capsules}
             </div>
           </div>
           <Button

@@ -1,13 +1,14 @@
 :root {
     --bg-color: none;
     --main-color: #BC2749;
-    --content-color: #ECCDC1;
+    --content-color: #5AD5C7;
     --text-color: black;
 }
 
 *{
     /* font-family: 'TTTtangsbudaejjigaeB'; */
-    font-family: 'KyoboHandwriting2021sjy';
+    /* font-family: 'KyoboHandwriting2021sjy'; */
+    font-family: 'KOTRAHOPE';
 }
 body{
     background-image: url(../backgroundImage/background_beach.png);
@@ -26,5 +27,17 @@ body{
     font-family: 'KyoboHandwriting2021sjy';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
     font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: 400;
     font-style: normal;
 }

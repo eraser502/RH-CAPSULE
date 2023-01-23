@@ -34,7 +34,7 @@ export const InitSettingModal = (props: {
 
   const selectDate = () => {
     if (checkIndex === -1) {
-      alert("체크해 시발"); //토스트로 바꾸기
+      alert("개봉일자를 체크해주세요"); //토스트로 바꾸기
       return;
     }
     setPageIndex(2);
@@ -57,8 +57,6 @@ export const InitSettingModal = (props: {
                 setPageIndex(1);
               }}
             />
-            {/* <button onClick={() => props.bgClick(false)}>닫기</button> */}
-            {/* <button onClick={() => console.log(props.color.glassColor)}>test</button> */}
           </>
         ) : pageIndex === 1 ? (
           <div className="glassDateSettingContainer">
@@ -84,12 +82,12 @@ export const InitSettingModal = (props: {
                 style={{
                   display: "flex",
                   height: "20px",
-                  fontSize: "20px",
+                  fontSize: "16px",
                   gap: "4px",
                 }}
               >
                 {dateSelector.map((value: any) => (
-                  <div key={value.name} style={{ display: "flex" }}>
+                  <div key={value.name} style={{ display: "flex",alignItems:"center" }}>
                     <input
                       name={value.name}
                       type="checkbox"
@@ -110,12 +108,9 @@ export const InitSettingModal = (props: {
                 }}
               />
             </div>
-            {/* <div className="cork" /> */}
-            {/* <div className="tape" /> */}
+
             <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
 
-            {/* <button onClick={() => props.bgClick(false)}>닫기</button> */}
-            {/* <button onClick={() => console.log(props.color.glassColor)}>test</button> */}
           </div>
         ) : pageIndex === 2 ? (
           <div className="glassDateSettingContainer">

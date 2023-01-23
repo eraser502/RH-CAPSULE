@@ -35,7 +35,7 @@
       margin-bottom: 16px;
     }
     input {
-      font-size: 20px;
+      font-size: 16px;
       width: 200px;
       padding: 0 16px;
       height: 32px;
@@ -63,14 +63,14 @@
         border-radius: 8px;
         outline: none;
         background-color: white;
-        color: var(--bg-color);
+        color: gray;
         box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
     }
-    .signUpText {
-      font-size: 16px;
-      color: gray;
-      font-weight: 400;
-    }
+  }
+  .signUpText {
+    font-size: 16px;
+    color: gray;
+    font-weight: 400;
   }
 }
 @font-face { 

@@ -3,45 +3,30 @@ import { useState } from "react";
 import { db, auth } from "../firebase";
 import { getDoc, doc, setDoc, connectFirestoreEmulator, collection } from "firebase/firestore";
 import {
+
   getAuth,
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
   signInWithEmailLink,
   sendEmailVerification,
 } from "firebase/auth";
-
 export const joinWithVerification = async (name : string, email: string, password: string) => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
     await sendEmailVerification(auth.currentUser);
-    alert("이메일 전송완료, 확인요망");
+    alert("이메일 전송완료. 이메일을 확인해주세요. \n이메일이 오지 않으셨다면 스팸함을 확인해주세요.");
     await updateProfile(auth.currentUser, { displayName: name});
+    return true
   } catch (err: any) {
-    // console.error(err)
-    alert(err);
+    if(err.message === "Firebase: Error (auth/email-already-in-use)."){
+      alert("이미 존재하는 이메일입니다.");
+      return false
+    }else{
+      alert(err)
+      return true
+    }
   }
 };
-
-//여기안에 makeuser 넣으셈
-// export const userCheck = async (email: string, password: string) => {
-//   await signInWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       // Signed in
-//         if(auth.currentUser.emailVerified === true){
-//             const user = userCredential.user;
-//             console.log(user);
-//         }else{
-//             handleSignOut();
-//         }
-        
-//       // ...
-//     })
-//     .catch((error) => {
-//       // const errorCode = error.code;
-//       // const errorMessage = error.message;
-//       console.error(error);
-//     });
-// };
 
 export const handleSignOut = async () => {
   await auth.signOut();
