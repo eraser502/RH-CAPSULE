@@ -16,8 +16,7 @@ import {
 
 import { auth } from "../firebase";
 import { Glass } from "../components/Glass";
-import { InitSettingModal } from "../components/InitSettingModal";
-import { getGlassSetting } from "../services/doc.services";
+import { getData, getGlassSetting } from "../services/doc.services";
 
 export const Main = () => {
   const [isWriteOpen, setIsWriteOpen] = useState(false);
@@ -78,6 +77,15 @@ export const Main = () => {
     }
   };
 
+  const onClickWriteButton = () => {
+    const isWrite = getData(auth.currentUser.uid);
+    if (isWrite) {
+      alert(`이미 타입캡슐을 작성하셨습니다.`);
+      return;
+    }
+    setIsWriteOpen(!isWriteOpen);
+  };
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -91,6 +99,7 @@ export const Main = () => {
           capsuleDB={data.capsuleDB}
           isMe={true}
           setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)}
+          userId = {auth.currentUser.uid}
           reLoadCapsule={() => {
             fetchData();
           }}
@@ -140,11 +149,13 @@ export const Main = () => {
                 className="glassCapsule"
                 src={`/assets/glassOpen_${data.glassSetting.glassColor}.png`}
               />
+               <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
+               <div className="openDate">개봉 일자<br />[{data.glassSetting.openDate}]</div>
               <Button
                 btColor={data.glassSetting.glassColor}
                 bottom="84px"
                 name="나에게 타임캡슐 쓰기"
-                btnClick={() => setIsWriteOpen(!isWriteOpen)}
+                btnClick={() => onClickWriteButton()}
               ></Button>
               <Button
                 btColor={data.glassSetting.glassColor}

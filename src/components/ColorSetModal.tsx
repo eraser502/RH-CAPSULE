@@ -79,6 +79,7 @@ export const ColorSetModal = (props: {
               <ChromePicker
                 color={color}
                 onChange={(color) => handleColorChange(color.hex)}
+                disableAlpha={true}
               />
             </div>
           ) : null}

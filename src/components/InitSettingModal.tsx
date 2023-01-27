@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { SelectDatepicker } from "react-select-datepicker";
+import React, { useState } from "react";
 import { Carousel } from "./Carousel";
 import "./InitSettingModal.scss";
 import { BiArrowBack } from "react-icons/bi";
@@ -145,7 +144,7 @@ export const InitSettingModal = (props: {
             <div className="cork" />
             <div className="tape" />
             <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
-            <div className="OpenDate">개봉 일자<br />[{props.glassSettingList.openDate}]</div>
+            <div className="openDate">개봉 일자<br />[{props.glassSettingList.openDate}]</div>
           </div>
         ) : null}
       </div>

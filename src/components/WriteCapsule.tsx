@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
-import { updateCapsuleDB } from "../services/doc.services";
+import { setData, updateCapsuleDB } from "../services/doc.services";
 import { Button } from "./Button";
 import "./WriteCapsule.scss";
 import { auth } from "../firebase";
@@ -20,7 +20,14 @@ export const WriteCapsule = (props: {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCapsule = async (color:any) => {
+  const handleCapsule = async (color: any) => {
+    if (
+      !window.confirm(
+        "생성하시겠습니까?\n(캡슐은 한번만 작성 가능하며, 생성한 캡슐은 수정할 수 없습니다.)"
+      )
+    ) {
+      return;
+    }
     setLoading(true);
     const date = new Date();
     let capsule = {
@@ -29,19 +36,21 @@ export const WriteCapsule = (props: {
       writer: writer,
       createdAt: date,
       isMe: props.isMe,
-      capsuleColor:color
+      capsuleColor: color,
     };
     let tmp = [...props.capsuleDB, capsule];
-   
+
     if (!props.isMe) {
       updateCapsuleDB(tmp, props.userId).then(() => {
         setLoading(false);
+        setData(props.userId, true);
         props.setIsWriteOpen(false);
         props.reLoadCapsule();
       });
     } else {
       updateCapsuleDB(tmp, auth.currentUser.uid).then(() => {
         setLoading(false);
+        setData(props.userId, true);
         props.setIsWriteOpen(false);
         props.reLoadCapsule();
       });
@@ -84,10 +93,10 @@ export const WriteCapsule = (props: {
         name={loading ? "보내는 중..." : "타임캡슐 만들기"}
         btnClick={() => {
           // handleCapsule();
-          if(title && writer && content){
+          if (title && writer && content) {
             setIsModalOpen(true);
-          }else{
-            alert("내용을 입력해주세요.")
+          } else {
+            alert("내용을 입력해주세요.");
           }
         }}
       />
@@ -97,7 +106,7 @@ export const WriteCapsule = (props: {
           setIsModalOpen={() => {
             setIsModalOpen(false);
           }}
-          handleCapsule={(e:any)=>handleCapsule(e)}
+          handleCapsule={(e: any) => handleCapsule(e)}
         />
       ) : null}
     </div>

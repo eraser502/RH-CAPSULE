@@ -1,18 +1,24 @@
-import { UserCredential } from "firebase/auth";
 import {
-  addDoc,
   collection,
-  deleteDoc,
   doc,
   getDoc,
   getDocs,
-  orderBy,
-  query,
   setDoc,
   updateDoc,
-  where,
 } from "firebase/firestore";
-import { auth, db, storage } from "../firebase";
+import { auth, db} from "../firebase";
+
+export const getData = (uid:string) => {
+  let data = localStorage.getItem(uid);
+  if (data != null) {
+    return true;
+  } 
+  return false
+};
+
+export const setData = (uid:string, isWrite: boolean) => {
+  localStorage.setItem(uid, JSON.stringify(isWrite));
+}
 
 export const getGlassSetting = async () => {
   //todo 값을 db에서 받아옴
@@ -67,7 +73,7 @@ export const setCapsuleDB = async () => {
     { merge: true }
   );
 };
-export const updateCapsuleDB = async (capsuleDB: any, userPath:any) => {
+export const updateCapsuleDB = async (capsuleDB: any, userPath: any) => {
   const docRef = collection(db, "user");
   const docRef2 = doc(docRef, userPath);
   const docRef3 = collection(docRef2, "MyGlass");
@@ -107,8 +113,6 @@ export const getGuestData = async (userId: any) => {
     name: querySnapshot1.data().userName,
     capsuleDB: arr[0].capsuleDB,
     color: arr[1].glassColor,
+    openDate: arr[1].openDate
   };
-
 };
-
-

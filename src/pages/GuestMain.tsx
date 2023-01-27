@@ -4,7 +4,10 @@ import { Button } from "../components/Button";
 import { Capsule } from "../components/Capsule";
 import { WriteCapsule } from "../components/WriteCapsule";
 import { Loading } from "../components/Loading";
-import { getGuestData, updateCapsuleDB } from "../services/doc.services";
+import {
+  getData,
+  getGuestData,
+} from "../services/doc.services";
 import "./GuestMain.scss";
 
 type pageParams = { userId: string };
@@ -15,7 +18,7 @@ export const GuestMain: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<any>({ name: "", capsuleDB: [] });
-  const [capsuleDB, setCapsuleDB] = useState("");
+
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -26,6 +29,18 @@ export const GuestMain: React.FC = () => {
       console.error(e);
       setLoading(false);
     }
+  };
+
+  const onClickWriteButton = () => {
+    if (userId === undefined) {
+      return;
+    }
+    const isWrite = getData(userId);
+    if (isWrite) {
+      alert(`이미 ${data.name}님에게 타입캡슐을 작성하셨습니다.`);
+      return;
+    }
+    setIsWriteOpen(!isWriteOpen);
   };
 
   useEffect(() => {
@@ -62,9 +77,12 @@ export const GuestMain: React.FC = () => {
             className="glassCapsule"
             src={`/assets/glassOpen_${data.color}.png`}
           />
+          <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
+          <div className="openDate">개봉 일자<br />[{data.openDate}]</div>
           <div className="mainContentBox">
             <div className="mainReceivedCapsuleText">
-              {data.name}님이<br/> 받은 캡슐들
+              {data.name}님이
+              <br /> 받은 캡슐들
             </div>
             <div className="mainReceivedCapsule">
               {/* {data.capsuleDB.map(() => (
@@ -73,12 +91,13 @@ export const GuestMain: React.FC = () => {
               {capsules}
             </div>
           </div>
+
           <Button
             btColor={data.color}
             bottom="84px"
             name={`${data.name}님에게 타임캡슐 쓰기`}
             btnClick={() => {
-              setIsWriteOpen(!isWriteOpen);
+              onClickWriteButton();
             }}
           ></Button>
           <Button

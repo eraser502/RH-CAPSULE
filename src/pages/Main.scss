@@ -6,7 +6,22 @@
   flex-direction: column;
   align-items: center;
   padding: 16px;
-
+  .sealDate {
+    position: absolute;
+    top: calc((100% - 52px) / 2 - 24px);
+    z-index: 11;
+    text-align: center;
+    border-bottom: 2px dashed black;
+    font-size: 1.2rem;
+  }
+  .openDate {
+    position: absolute;
+    top: calc((100% - 52px) / 2 + 40px);
+    z-index: 11;
+    text-align: center;
+    border-bottom: 2px dashed black;
+    font-size: 1.2rem;
+  }
   .mainContentBox {
     width: 100%;
     height: calc(100% - 60px);
@@ -43,96 +58,96 @@
       flex-flow: wrap row;
     }
 
-    .mainReceivedCapsule > div:nth-child(1){
-      position:absolute;
-      left:calc(50% - 116px);
+    .mainReceivedCapsule > div:nth-child(1) {
+      position: absolute;
+      left: calc(50% - 116px);
       top: calc(50% + 80px);
       rotate: -75deg;
     }
-    .mainReceivedCapsule > div:nth-child(2){
-      position:absolute;
-      left:calc(50% - 80px);
+    .mainReceivedCapsule > div:nth-child(2) {
+      position: absolute;
+      left: calc(50% - 80px);
       top: calc(50% + 96px);
-      rotate:12deg;
+      rotate: 12deg;
     }
-    .mainReceivedCapsule > div:nth-child(3){
-      position:absolute;
-      left:calc(50% - 48px);
+    .mainReceivedCapsule > div:nth-child(3) {
+      position: absolute;
+      left: calc(50% - 48px);
       top: calc(50% + 80px);
-      rotate:205deg;
+      rotate: 205deg;
     }
-    .mainReceivedCapsule > div:nth-child(4){
-      position:absolute;
-      left:calc(50% + 8px);
+    .mainReceivedCapsule > div:nth-child(4) {
+      position: absolute;
+      left: calc(50% + 8px);
       top: calc(50% + 92px);
-      rotate:-12deg;
+      rotate: -12deg;
     }
-    .mainReceivedCapsule > div:nth-child(5){
-      position:absolute;
-      left:calc(50% - 100px);
+    .mainReceivedCapsule > div:nth-child(5) {
+      position: absolute;
+      left: calc(50% - 100px);
       top: calc(50% + 32px);
-      rotate:192deg;
+      rotate: 192deg;
     }
-    .mainReceivedCapsule > div:nth-child(6){
-      position:absolute;
-      left:calc(50% - 40px);
+    .mainReceivedCapsule > div:nth-child(6) {
+      position: absolute;
+      left: calc(50% - 40px);
       top: calc(50% + 32px);
-      rotate:-60deg;
+      rotate: -60deg;
     }
-    .mainReceivedCapsule > div:nth-child(7){
-      position:absolute;
-      left:calc(50% + 12px);
+    .mainReceivedCapsule > div:nth-child(7) {
+      position: absolute;
+      left: calc(50% + 12px);
       top: calc(50% + 52px);
-      rotate:-170deg;
+      rotate: -170deg;
     }
-    
-    .mainReceivedCapsule > div:nth-child(8){
-      position:absolute;
-      left:calc(50% - 96px);
+
+    .mainReceivedCapsule > div:nth-child(8) {
+      position: absolute;
+      left: calc(50% - 96px);
       top: calc(50% - 4px);
-      rotate:10deg;
+      rotate: 10deg;
     }
-    .mainReceivedCapsule > div:nth-child(9){
-      position:absolute;
-      left:calc(50% + 16px);
+    .mainReceivedCapsule > div:nth-child(9) {
+      position: absolute;
+      left: calc(50% + 16px);
       top: calc(50% + 12px);
-      rotate:-140deg;
+      rotate: -140deg;
     }
-    .mainReceivedCapsule > div:nth-child(10){
-      position:absolute;
-      left:calc(50% - 52px);
+    .mainReceivedCapsule > div:nth-child(10) {
+      position: absolute;
+      left: calc(50% - 52px);
       top: calc(50% - 32px);
-      rotate:-150deg;
+      rotate: -150deg;
     }
-    .mainReceivedCapsule > div:nth-child(11){
-      position:absolute;
-      left:calc(50% + 28px);
+    .mainReceivedCapsule > div:nth-child(11) {
+      position: absolute;
+      left: calc(50% + 28px);
       top: calc(50% - 40px);
-      rotate:76deg;
+      rotate: 76deg;
     }
-    .mainReceivedCapsule > div:nth-child(12){
-      position:absolute;
-      left:calc(50% - 104px);
+    .mainReceivedCapsule > div:nth-child(12) {
+      position: absolute;
+      left: calc(50% - 104px);
       top: calc(50% - 32px);
-      rotate:-150deg;
+      rotate: -150deg;
     }
-    .mainReceivedCapsule > div:nth-child(13){
-      position:absolute;
-      left:calc(50% - 24px);
+    .mainReceivedCapsule > div:nth-child(13) {
+      position: absolute;
+      left: calc(50% - 24px);
       top: calc(50% - 48px);
-      rotate:15deg;
+      rotate: 15deg;
     }
-    .mainReceivedCapsule > div:nth-child(14){
-      position:absolute;
-      left:calc(50% - 96px);
+    .mainReceivedCapsule > div:nth-child(14) {
+      position: absolute;
+      left: calc(50% - 96px);
       top: calc(50% - 80px);
-      rotate:-190deg;
+      rotate: -190deg;
     }
-    .mainReceivedCapsule > div:nth-child(15){
-      position:absolute;
-      left:calc(50% - 12px);
+    .mainReceivedCapsule > div:nth-child(15) {
+      position: absolute;
+      left: calc(50% - 12px);
       top: calc(50% - 88px);
-      rotate:-175deg;
+      rotate: -175deg;
     }
   }
 }
