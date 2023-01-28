@@ -26,11 +26,10 @@ export const getGlassSetting = async () => {
   const docRef2 = doc(docRef, auth.currentUser?.uid);
   const docRef3 = collection(docRef2, "MyGlass");
 
-  const querySnapshot = await getDocs(docRef3);
-
+  const querySnapshot1 = await getDocs(docRef3);
   let arr: any = [];
   let tmpObj: any = {};
-  querySnapshot.forEach((doc) => {
+  querySnapshot1.forEach((doc) => {
     tmpObj = doc.data();
     tmpObj.id = doc.id;
     arr = [...arr, tmpObj];
@@ -39,7 +38,7 @@ export const getGlassSetting = async () => {
     return undefined;
   }
   return {
-    capsuleDB: arr[0].capsuleDB,
+    capsuleDB: arr[0],
     glassSetting: arr[1],
   };
 };
@@ -73,14 +72,27 @@ export const setCapsuleDB = async () => {
     { merge: true }
   );
 };
-export const updateCapsuleDB = async (capsuleDB: any, userPath: any) => {
+export const updateCapsuleDB = async (capsule: any, userPath: any, capsuleColorDB:any) => {
   const docRef = collection(db, "user");
   const docRef2 = doc(docRef, userPath);
   const docRef3 = collection(docRef2, "MyGlass");
-
-  await updateDoc(doc(docRef3, "Capsules"), {
-    capsuleDB: capsuleDB,
-  });
+  let idx = capsuleColorDB.length;
+  // await updateDoc(doc(docRef3, "Capsules"), {
+  //   capsuleDB: capsuleDB,
+  // });
+  await setDoc(
+    doc(docRef3, "Capsules"),
+    {
+      [`capsule${idx}`]:capsule
+    },
+    { merge: true }
+  );
+  await updateDoc(
+    doc(docRef3, "Me"),
+    {
+      capsuleColorDB:capsuleColorDB
+    },
+  );
 };
 
 export const setGlassSetting = async (obj: any) => {
@@ -100,19 +112,14 @@ export const getGuestData = async (userId: any) => {
   const docRef2 = doc(docRef, userId);
   const docRef3 = collection(docRef2, "MyGlass");
 
-  const querySnapshot2 = await getDocs(docRef3);
-
+  const querySnapshot2: any = await getDoc(doc(docRef3, "Me"));
   let arr: any = [];
   let tmpObj: any = {};
-  querySnapshot2.forEach((doc) => {
-    tmpObj = doc.data();
-    tmpObj.id = doc.id;
-    arr = [...arr, tmpObj];
-  });
-  return {
+
+  return{
     name: querySnapshot1.data().userName,
-    capsuleDB: arr[0].capsuleDB,
-    color: arr[1].glassColor,
-    openDate: arr[1].openDate
-  };
+    capsuleColorDB: querySnapshot2.data().capsuleColorDB,
+    color: querySnapshot2.data().glassColor,
+    openDate:querySnapshot2.data().openDate,
+  }
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Capsule } from "../components/Capsule";
 import "./SignUp.scss";
 import { useNavigate } from "react-router-dom";
-import { joinWithVerification } from "../services/login.services";
+import { joinWithVerification, makeUser } from "../services/login.services";
 
 export const SignUp = () => {
   const navigate = useNavigate();

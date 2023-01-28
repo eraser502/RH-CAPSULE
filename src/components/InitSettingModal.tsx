@@ -12,7 +12,7 @@ export const InitSettingModal = (props: {
 }) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [dateSelector, setDateSelector] = useState([
-    { name: "6개월 뒤", checked: false, date: "2023. 8. 1." },
+    { name: "6개월 뒤", checked: false, date: "2023. 9. 1." },
     { name: "1년 뒤", checked: false, date: "2024. 1. 1." },
     { name: "5년 뒤", checked: false, date: "2028. 1. 1." },
     { name: "10년 뒤", checked: false, date: "2033. 1. 1." },
@@ -108,7 +108,7 @@ export const InitSettingModal = (props: {
               />
             </div>
 
-            <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
+            <div className="sealDate">봉인 일자<br />[2023. 2. 28.]</div>
 
           </div>
         ) : pageIndex === 2 ? (
@@ -143,7 +143,7 @@ export const InitSettingModal = (props: {
             </div>
             <div className="cork" />
             <div className="tape" />
-            <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
+            <div className="sealDate">봉인 일자<br />[2023. 2. 28.]</div>
             <div className="openDate">개봉 일자<br />[{props.glassSettingList.openDate}]</div>
           </div>
         ) : null}

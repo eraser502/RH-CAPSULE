@@ -9,7 +9,7 @@ import { ColorSetModal } from "./ColorSetModal";
 export const WriteCapsule = (props: {
   userId?: any;
   color?: any;
-  capsuleDB: any;
+  capsuleColorDB: any;
   isMe?: boolean;
   setIsWriteOpen: any;
   reLoadCapsule?: any;
@@ -38,23 +38,31 @@ export const WriteCapsule = (props: {
       isMe: props.isMe,
       capsuleColor: color,
     };
-    let tmp = [...props.capsuleDB, capsule];
-
+    let capsuleColorDB;
+    if(props.capsuleColorDB){
+      capsuleColorDB = [...props.capsuleColorDB]
+      capsuleColorDB.push(color)
+    }else{
+      capsuleColorDB = [color]
+    }
+    
+    // let tmp = [...props.capsuleDB, capsule];
     if (!props.isMe) {
-      updateCapsuleDB(tmp, props.userId).then(() => {
+      updateCapsuleDB(capsule, props.userId, capsuleColorDB).then(() => {
         setLoading(false);
         setData(props.userId, true);
         props.setIsWriteOpen(false);
         props.reLoadCapsule();
       });
     } else {
-      updateCapsuleDB(tmp, auth.currentUser.uid).then(() => {
+      updateCapsuleDB(capsule, auth.currentUser.uid, capsuleColorDB).then(() => {
         setLoading(false);
         setData(props.userId, true);
         props.setIsWriteOpen(false);
         props.reLoadCapsule();
       });
     }
+    
   };
 
   return (

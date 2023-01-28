@@ -149,6 +149,21 @@
       top: calc(50% - 88px);
       rotate: -175deg;
     }
+    
+  }
+  .copyLinkButton{
+    max-width: 500px;
+    width: calc(100% - 32px);
+    position:fixed;
+    border:none;
+    text-align: center;
+    border-radius: 12px;
+    padding: 16px 0;
+    color: white;
+    font-weight: 400;
+    font-size: 1.3rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    bottom: 20px;
   }
 }
 .glassCapsule {
@@ -162,7 +177,7 @@
   background-color: #999c9ad5 !important;
   border-radius: 8px !important;
   min-height: 30px !important;
-  width: 180px !important;
+  width: 200px !important;
   margin: auto !important;
   display: inline-block !important;
   line-height: 30px !important;

@@ -6,9 +6,10 @@ import { setGlassSetting, setCapsuleDB } from "../services/doc.services";
 
 export const Glass = (props: { fetchData: any }) => {
   let glassSettingList = {
+    capsuleColorDB:[],
     glassColor: "",
     openDate: "",
-    sealDate: "2023. 1. 31.",
+    sealDate: "2023. 2. 28.",
   };
   const [modalIsOpen, setModalIsOpen] = useState(false);
 

@@ -10,6 +10,7 @@ import { auth } from "../firebase";
 import { FiLink } from "react-icons/fi";
 import { Carousel } from "./Carousel";
 import { GlassButton } from "./GlassButton";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 export const Modal = (props: {
   bgClick: any;
@@ -19,44 +20,42 @@ export const Modal = (props: {
 }) => {
   const urlLink: string = "teamrh229@gmail.com";
 
-  const linkCopy = async () => {
-    try {
-      navigator.clipboard.writeText(urlLink).then(() => {
-        props.onClickToastPopup("Email");
-      });
-    } catch (err: any) {
-      // console.log(err);
-      alert("Email 복사 실패");
-    }
-  };
-
   return (
     <>
       {props.name === "setting" ? (
         <>
           <div className="modalBG" onClick={() => props.bgClick(false)}></div>
           <div className="modalContentBox">
-            <div style={{ textAlign: "center", color: "black",fontWeight:"400",fontSize:"20px" }}>
+            <div
+              style={{
+                textAlign: "center",
+                color: "black",
+                fontWeight: "400",
+                fontSize: "20px",
+              }}
+            >
               사용 중 오류사항이나 불편한 점이 생기면
               <br />
               아래 이메일로 문의 바랍니다🙏
               <br />
               <br />
-              <span
-                onClick={() => {
-                  linkCopy();
-                }}
-                style={{
-                  backgroundColor: "white",
-                  color: "black",
-                  padding: "4px 12px",
-                  borderRadius: "8px",
-                  fontWeight:"400",
-                  fontSize:"20px"
-                }}
+              <CopyToClipboard
+                text={urlLink}
+                onCopy={() => props.onClickToastPopup("Email")}
               >
-                teamrh229@gmail.com
-              </span>
+                <span
+                  style={{
+                    backgroundColor: "white",
+                    color: "black",
+                    padding: "4px 12px",
+                    borderRadius: "8px",
+                    fontWeight: "400",
+                    fontSize: "20px",
+                  }}
+                >
+                  teamrh229@gmail.com
+                </span>
+              </CopyToClipboard>
             </div>
             <button
               style={{
@@ -64,9 +63,9 @@ export const Modal = (props: {
                 border: "none",
                 borderRadius: "8px",
                 backgroundColor: "white",
-                fontWeight:"400",
-                color:"black",
-                fontSize:"16px"
+                fontWeight: "400",
+                color: "black",
+                fontSize: "16px",
               }}
               onClick={() => {
                 handleSignOut();
@@ -97,4 +96,3 @@ export const Modal = (props: {
     </>
   );
 };
-// onClick={() => props.bgClick(false)}

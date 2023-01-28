@@ -4,10 +4,7 @@ import { Button } from "../components/Button";
 import { Capsule } from "../components/Capsule";
 import { WriteCapsule } from "../components/WriteCapsule";
 import { Loading } from "../components/Loading";
-import {
-  getData,
-  getGuestData,
-} from "../services/doc.services";
+import { getData, getGuestData } from "../services/doc.services";
 import "./GuestMain.scss";
 
 type pageParams = { userId: string };
@@ -17,7 +14,7 @@ export const GuestMain: React.FC = () => {
   const { userId: userId } = useParams<pageParams>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({ name: "", capsuleDB: [] });
+  const [data, setData] = useState<any>({ name: "", capsuleColorDB: [] });
 
   const fetchData = async () => {
     setLoading(true);
@@ -26,7 +23,16 @@ export const GuestMain: React.FC = () => {
       setData(response);
       setLoading(false);
     } catch (e: any) {
-      console.error(e);
+      console.log(e.message);
+      if (
+        e.message.includes("undefined")
+        // "Cannot read properties of undefined (reading 'userName')"
+      ) {
+        alert("잘못된 링크입니다.")
+        navigate("/main");
+ 
+      }
+      // navigate
       setLoading(false);
     }
   };
@@ -49,10 +55,8 @@ export const GuestMain: React.FC = () => {
 
   let capsules = [];
   if (data) {
-    for (let i = 0; i < data.capsuleDB.length; i++) {
-      capsules.push(
-        <Capsule color={data.capsuleDB[i].capsuleColor} width="40px" />
-      );
+    for (let i = 0; i < data.capsuleColorDB.length; i++) {
+      capsules.push(<Capsule color={data.capsuleColorDB[i]} width="40px" />);
       if (i == 14) {
         break;
       }
@@ -66,7 +70,7 @@ export const GuestMain: React.FC = () => {
         <WriteCapsule
           userId={userId}
           color={data.color}
-          capsuleDB={data.capsuleDB}
+          capsuleColorDB={data.capsuleColorDB}
           isMe={false}
           setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)}
           reLoadCapsule={() => fetchData()}
@@ -77,8 +81,15 @@ export const GuestMain: React.FC = () => {
             className="glassCapsule"
             src={`/assets/glassOpen_${data.color}.png`}
           />
-          <div className="sealDate">봉인 일자<br />[2023. 1. 31.]</div>
-          <div className="openDate">개봉 일자<br />[{data.openDate}]</div>
+          <div className="sealDate">
+            봉인 일자
+            <br />
+            [2023. 1. 31.]
+          </div>
+          <div className="openDate">
+            개봉 일자
+            <br />[{data.openDate}]
+          </div>
           <div className="mainContentBox">
             <div className="mainReceivedCapsuleText">
               {data.name}님이
