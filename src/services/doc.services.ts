@@ -123,11 +123,6 @@ export const getGuestData = async (userId: any) => {
   const querySnapshot3: any = await getDoc(doc(docRef3, "tCapsuleColors"));
   let colorArr;
 
-  // if (querySnapshot3.data()) {
-  //   colorArr = Object.values(querySnapshot3.data());
-  //   console.log(colorArr);
-  // }
-
   return {
     name: querySnapshot1.data().userName,
     capsuleColorDB: Object.values(querySnapshot3.data()),

@@ -64,4 +64,3 @@ export const Carousel = (props: { setColor: any }) => {
     </div>
   );
 };
-// class="slick-slide slick-active slick-current"
