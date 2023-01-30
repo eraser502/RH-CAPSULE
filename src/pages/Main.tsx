@@ -126,9 +126,7 @@ export const Main = () => {
             {user.displayName}님이 받은 캡슐들
             </div> */}
             <div className="mainReceivedCapsule">
-              {/* {[1, 1, 1, 1, 1,1,1,1,1,1,1,1,1,1,1].map(() => (
-                <Capsule width="40px" />
-              ))} */}
+
               {capsules}
             </div>
           </div>
