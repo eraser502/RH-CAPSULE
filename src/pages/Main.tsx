@@ -54,9 +54,9 @@ export const Main = () => {
   };
   let capsules = [];
   if (data) {
-    for (let i = 0; i < data.glassSetting.capsuleColorDB.length; i++) {
+    for (let i = 0; i < data.capsuleColorDB.length; i++) {
       capsules.push(
-        <Capsule color={data.glassSetting.capsuleColorDB[i]} width="40px" />
+        <Capsule color={data.capsuleColorDB[i]} width="40px" key={i} />
       );
       if (i == 14) {
         break;
@@ -83,7 +83,7 @@ export const Main = () => {
       {isWriteOpen ? (
         <WriteCapsule
           color={data.glassSetting.glassColor}
-          capsuleColorDB={data.glassSetting.capsuleColorDB}
+          capsuleColorDB={data.capsuleColorDB}
           isMe={true}
           setIsWriteOpen={(e: boolean) => setIsWriteOpen(e)}
           userId={auth.currentUser.uid}
@@ -146,10 +146,13 @@ export const Main = () => {
                 className="glassCapsule"
                 src={`/assets/glassOpen_${data.glassSetting.glassColor}.png`}
               />
+              <div className="receivedCapsuleNum">
+                받은 캡슐 {data.capsuleColorDB.length}개
+              </div>
               <div className="sealDate">
                 봉인 일자
                 <br />
-                [2023. 1. 31.]
+                [2023. 2. 28.]
               </div>
               <div className="openDate">
                 개봉 일자

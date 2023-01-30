@@ -11,7 +11,6 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [loading, setLoading] = useState(false);
-
   let passwordCheck = password === password2 && password.length > 5 && name;
 
   const handleSignUp = async () => {

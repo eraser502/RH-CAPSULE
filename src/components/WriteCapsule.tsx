@@ -38,24 +38,24 @@ export const WriteCapsule = (props: {
       isMe: props.isMe,
       capsuleColor: color,
     };
-    let capsuleColorDB;
-    if(props.capsuleColorDB){
-      capsuleColorDB = [...props.capsuleColorDB]
-      capsuleColorDB.push(color)
-    }else{
-      capsuleColorDB = [color]
-    }
+    // let capsuleColorDB;
+    // if(props.capsuleColorDB){
+    //   capsuleColorDB = [...props.capsuleColorDB]
+    //   capsuleColorDB.push(color)
+    // }else{
+    //   capsuleColorDB = [color]
+    // }
     
     // let tmp = [...props.capsuleDB, capsule];
     if (!props.isMe) {
-      updateCapsuleDB(capsule, props.userId, capsuleColorDB).then(() => {
+      updateCapsuleDB(capsule, props.userId, color).then(() => {
         setLoading(false);
         setData(props.userId, true);
         props.setIsWriteOpen(false);
         props.reLoadCapsule();
       });
     } else {
-      updateCapsuleDB(capsule, auth.currentUser.uid, capsuleColorDB).then(() => {
+      updateCapsuleDB(capsule, auth.currentUser.uid, color).then(() => {
         setLoading(false);
         setData(props.userId, true);
         props.setIsWriteOpen(false);

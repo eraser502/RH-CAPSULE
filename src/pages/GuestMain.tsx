@@ -56,7 +56,7 @@ export const GuestMain: React.FC = () => {
   let capsules = [];
   if (data) {
     for (let i = 0; i < data.capsuleColorDB.length; i++) {
-      capsules.push(<Capsule color={data.capsuleColorDB[i]} width="40px" />);
+      capsules.push(<Capsule color={data.capsuleColorDB[i]} width="40px" key={i} />);
       if (i == 14) {
         break;
       }
@@ -81,10 +81,13 @@ export const GuestMain: React.FC = () => {
             className="glassCapsule"
             src={`/assets/glassOpen_${data.color}.png`}
           />
+          <div className="receivedCapsuleNum">
+                받은 캡슐 {data.capsuleColorDB.length}개
+              </div>
           <div className="sealDate">
             봉인 일자
             <br />
-            [2023. 1. 31.]
+            [2023. 2. 28.]
           </div>
           <div className="openDate">
             개봉 일자
