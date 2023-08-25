@@ -10,6 +10,7 @@ import { SignUp } from "./pages/SignUp";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './firebase';
 import { makeUser } from "./services/login.services";
+import { Block } from "./pages/Block";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -32,7 +33,7 @@ function App() {
   return (
     <div style={{ width: "100%", height: "100vh" }}>
       <BrowserRouter>
-        {loading === false && isLogin ? (
+        {/* {loading === false && isLogin ? (
           <Routes>
             <Route path="/" element={<Navigate to="main" />} />
             <Route path="/main" element={<Main />} />
@@ -47,7 +48,11 @@ function App() {
             <Route path="/capsule/:userId" element={<GuestMain />} />
             <Route path="*" element={<Navigate to="login" />} />
           </Routes>
-        )}
+        )} */}
+        <Routes>
+            <Route path="*" element={<Navigate to="block" />} />
+            <Route path="/block" element={<Block />} />
+        </Routes>
       </BrowserRouter>
       {loading ? <div>lodaing</div> : <div></div>}
     </div>
