@@ -9,7 +9,9 @@ export const Block = () => {
         flexDirection: "column",
         alignItems: "center",
         height: "100vh",
-        fontSize: "32px",
+        fontSize: "28px",
+        padding: "20px",
+        boxSizing:"border-box"
       }}
     >
       <div style={{backgroundColor:"#eaeaea", borderRadius:"8px",textAlign:"center",padding:"8px"}}>

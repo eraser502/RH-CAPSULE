@@ -30,6 +30,8 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
     textarea {
       width: calc(100% - 32px);
       height: calc(100% - 32px);
